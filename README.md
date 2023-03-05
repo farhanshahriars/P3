@@ -1,2 +1,2 @@
 # P2
-Part 2 of the project
+This will be updated with tasks to be done
