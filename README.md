@@ -5,7 +5,7 @@ Basel linked to VsCode
   
 ## Tasks:
 - Grid ---- Bhaumik
-- Images
+- Images --- Basel
 - Drag and Drop --- Zeba
 - Check if answer is correct or not
 - Display if answer is correct or not
