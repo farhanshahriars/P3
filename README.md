@@ -5,9 +5,9 @@ Basel linked to VsCode
   
 ## Tasks:
 - Grid ---- Bhaumik
-- Images --- Basel
+- Images
 - Drag and Drop --- Zeba
-- Check if answer is correct or not
+- Check if answer is correct or not --- Basel
 - Display if answer is correct or not
 - Audio
 - Replay Button
