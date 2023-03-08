@@ -7,7 +7,7 @@ Basel linked to VsCode
 - Grid ---- Bhaumik
 - Images
 - Drag and Drop --- Zeba
-- Check if answer is correct or not
+- Check if answer is correct or not --- Basel
 - Display if answer is correct or not
 - Audio
 - Replay Button
