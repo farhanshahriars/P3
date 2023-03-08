@@ -6,7 +6,7 @@ Basel linked to VsCode
 ## Tasks:
 - Grid
 - Images
-- Drag and Drop
+- Drag and Drop --- Zeba
 - Check if answer is correct or not
 - Display if answer is correct or not
 - Audio
