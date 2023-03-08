@@ -11,4 +11,4 @@ Basel linked to VsCode
 - Display if answer is correct or not
 - Audio
 - Replay Button
-- Loop or redraw
+- Loop or redraw --- Phil
