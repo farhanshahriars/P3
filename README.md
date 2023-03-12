@@ -5,10 +5,10 @@ Basel linked to VsCode
 
 ## Tasks:
 
-- Grid
+- Grid ---- Bhaumik
 - Images
-- Drag and Drop
-- Check if answer is correct or not
+- Drag and Drop --- Zeba
+- Check if answer is correct or not --- Basel
 - Display if answer is correct or not
 - Audio
 - Replay Button
