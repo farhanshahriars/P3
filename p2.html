@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 
-<!--
-  P2 html file
-
-  Authors: Basel, Josh, Zeba, Phil, Bhaumik
--->
-
 <html>
   <head>
     <!-- Sets what appears in the window tab -->
@@ -25,27 +19,188 @@
     />
     <!-- make these styles available to this file -->
     <link href="./p2.css" rel="stylesheet" />
+    <!-- Make the jQuery library available to this file -->
+    <script src="./jquery-3.6.0.js"></script>
     <!-- make the JavaScript file available to this file -->
     <script src="./p2.js"></script>
   </head>
 
-  <body>
-    h
+  <br />
+  <br />
+  <body onload="loadStartQuestion()">
+    <!-- container class is required -->
     <div class="container">
-      <div class="row">
-        <div class="col-sm-4">Column 1</div>
-        <div class="col-sm-4">Column 2</div>
-        <div class="col-sm-4">Column 3</div>
+      <!-- define each row consisting of 12 columns -->
+      <div class="row g-0">
+        <div class="col-3"></div>
+        <div class="col-1">
+          <input
+            class="btn slim"
+            type="image"
+            src="./images/vol.jpg"
+            draggable="false"
+            onclick="playAudio()"
+          />
+        </div>
+        <div class="col-2 question"></div>
       </div>
-      <div class="row">
-        <div class="col-sm-4">Column 4</div>
-        <div class="col-sm-4">Column 5</div>
-        <div class="col-sm-4">Column 6</div>
+
+      <div class="row g-0">
+        <div class="col-2">
+          <img
+            id="star1"
+            src="./images/star.jpg"
+            alt=""
+            style="display: none"
+            draggable="false"
+          />
+        </div>
+        <div class="col-1"></div>
+
+        <div
+          id="cell1"
+          class="col-2"
+          ondrop="drop(event,1,cell1)"
+          ondragover="allowDrop(event,1)"
+        >
+          <img id="image1" src="./images/wiktm.jpg" alt="" draggable="false" />
+        </div>
+        <div
+          id="cell2"
+          class="col-2"
+          ondrop="drop(event,2,cell2)"
+          ondragover="allowDrop(event,2)"
+        >
+          <img
+            id="image2"
+            src="./images/teluisi.jpg"
+            alt=""
+            draggable="false"
+          />
+        </div>
+        <div
+          id="cell3"
+          class="col-2"
+          ondrop="drop(event,3,cell3)"
+          ondragover="allowDrop(event,3)"
+        >
+          <img id="image3" src="./images/nin.jpg" alt="" draggable="false" />
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+          <img
+            id="sun1"
+            src="./images/sun.jpg"
+            alt=""
+            s="drag(event)"
+            style="display: none"
+            draggable="false"
+          />
+        </div>
       </div>
-      <div class="row">
-        <div class="col-sm-4">Column 7</div>
-        <div class="col-sm-4">Column 8</div>
-        <div class="col-sm-4">Column 9</div>
+
+      <div class="row g-0">
+        <div class="col-0"></div>
+        <div id="bearcell" class="col-2 bear">
+          <img
+            id="bear"
+            src="./images/bear.jpg"
+            alt=""
+            ondragstart="drag(event)"
+          />
+          <img
+            id="correctText"
+            src="./images/successText.jpg"
+            alt=""
+            s="drag(event)"
+            style="display: none"
+            draggable="false"
+          />
+        </div>
+        <div class="col-1"></div>
+        <div
+          id="cell4"
+          class="col-2"
+          ondrop="drop(event,4,cell4)"
+          ondragover="allowDrop(event,4)"
+        >
+          <img id="image4" src="./images/mijisi.jpg" alt="" draggable="false" />
+        </div>
+        <div
+          id="cell5"
+          class="col-2"
+          ondrop="drop(event,5,cell5)"
+          ondragover="allowDrop(event,5)"
+        >
+          <img id="image5" src="./images/ltu.jpg" alt="" draggable="false" />
+        </div>
+        <div
+          id="cell6"
+          class="col-2"
+          ondrop="drop(event,6,cell6)"
+          ondragover="allowDrop(event,6)"
+        >
+          <img id="image6" src="./images/kil.jpg" alt="" draggable="false" />
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+          <img
+            id="incorrectText"
+            src="./images/oopsText.jpg"
+            alt=""
+            s="drag(event)"
+            style="display: none"
+            draggable="false"
+          />
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-2">
+          <img
+            id="star2"
+            src="./images/star.jpg"
+            alt=""
+            style="display: none"
+            draggable="false"
+          />
+        </div>
+        <div class="col-1"></div>
+        <div
+          id="cell7"
+          class="col-2"
+          ondrop="drop(event,7,cell7)"
+          ondragover="allowDrop(event,7)"
+        >
+          <img id="image7" src="./images/kesalk.jpg" alt="" draggable="false" />
+        </div>
+        <div
+          id="cell8"
+          class="col-2"
+          ondrop="drop(event,8,cell8)"
+          ondragover="allowDrop(event,8)"
+        >
+          <img id="image8" src="./images/eliey.jpg" alt="" draggable="false" />
+        </div>
+        <div
+          id="cell9"
+          class="col-2"
+          ondrop="drop(event,9,cell9)"
+          ondragover="allowDrop(event,9)"
+        >
+          <img id="image9" src="./images/aqq.jpg" alt="" draggable="false" />
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+          <img
+            id="sun2"
+            src="./images/sun.jpg"
+            alt=""
+            s="drag(event)"
+            style="display: none"
+            draggable="false"
+          />
+        </div>
       </div>
     </div>
   </body>
