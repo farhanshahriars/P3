@@ -13,7 +13,7 @@ const audioList = ["./audios/aqq.wav", "./audios/eliey.wav", "./audios/kesalk.wa
 const imageList = ["./images/aqqText.jpg", "./images/elieyText.jpg", "./images/kesalkText.jpg", "./images/kilText.jpg", "./images/ltuText.jpg", "./images/mijisiText.jpg", "./images/ninText.jpg", "./images/teluisiText.jpg", "./images/wiktmText.jpg"];
 
 //A value to link the audio button with the word on screen so it plays the correct audio
-let startQuestion = Math.floor(Math.random() * 3);
+let startQuestion = Math.floor(Math.random() * 9);
 
 /**
  * A function to play the audio for the displayed word 
