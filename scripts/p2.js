@@ -8,34 +8,34 @@
 
 //An array to hold the audio
 const audioList = [
-  "./audios/aqq.wav",
-  "./audios/eliey.wav",
-  "./audios/kesalk.wav",
-  "./audios/kil.wav",
-  "./audios/ltu.wav",
-  "./audios/mijisi.wav",
-  "./audios/nin.wav",
-  "./audios/teluisi.wav",
   "./audios/wiktm.wav",
+  "./audios/teluisi.wav",
+  "./audios/nin.wav",
+  "./audios/mijisi.wav",
+  "./audios/ltu.wav",
+  "./audios/kil.wav",
+  "./audios/kesalk.wav",
+  "./audios/eliey.wav",
+  "./audios/aqq.wav",
 ];
 
 //An array to hold the images
 const imageList = [
-  "./images/aqqText.jpg",
-  "./images/elieyText.jpg",
-  "./images/kesalkText.jpg",
-  "./images/kilText.jpg",
-  "./images/ltuText.jpg",
-  "./images/mijisiText.jpg",
-  "./images/ninText.jpg",
-  "./images/teluisiText.jpg",
   "./images/wiktmText.jpg",
+  "./images/teluisiText.jpg",
+  "./images/ninText.jpg",
+  "./images/mijisiText.jpg",
+  "./images/ltuText.jpg",
+  "./images/kilText.jpg",
+  "./images/kesalkText.jpg",
+  "./images/elieyText.jpg",
+  "./images/aqqText.jpg",
 ];
 
 //A value to link the audio button with the word on screen so it plays the correct audio
 let startQuestion = Math.floor(Math.random() * 9);
 
-const answer = Math.random() * 9;
+const answer = Math.floor(Math.random() * 9);
 
 /**
  * A function to play the audio for the displayed word
@@ -44,7 +44,7 @@ const answer = Math.random() * 9;
  */
 function playAudio() {
   var audio = new Audio();
-  audio.src = audioList[startQuestion];
+  audio.src = audioList[answer];
   audio.play();
 }
 
@@ -54,7 +54,7 @@ function playAudio() {
  * @author Basel
  */
 function loadStartQuestion() {
-  var loadImage = imageList[startQuestion];
+  var loadImage = imageList[answer];
   $(".question").append("<img src= " + loadImage + ' alt="">');
 }
 
@@ -171,7 +171,7 @@ function incorrect() {
  * @author Josh Cole
  */
 function checkAnswer(imageNum) {
-  if (answer == imageNum) {
+  if (answer == imageNum - 1) {
     correct();
   } else {
     incorrect();
