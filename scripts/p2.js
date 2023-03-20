@@ -144,24 +144,30 @@ function drop(ev, imageNum, cellNum) {
  * this function displays the screen with images
  * and text for the correct answer
  *
- * @author Josh Cole
+ * @author Josh Cole Bhaumik
  */
 function correct() {
   $("#star1").show();
   $("#star2").show();
   $("#correctText").show();
+  $("#restart").show();
+    $("#vol").hide();
+    $("#question").hide();
 }
 
 /**
  * this function displays the screen with images
  * and text for the incorrect answer
  *
- * @author Josh Cole
+ * @author Josh Cole Bhaumik
  */
 function incorrect() {
   $("#sun1").show();
   $("#sun2").show();
   $("#incorrectText").show();
+  $("#restart").show();
+    $("#vol").hide();
+    $("#question").hide();
 }
 
 /**

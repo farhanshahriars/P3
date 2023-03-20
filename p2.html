@@ -29,9 +29,16 @@
     <div class="row g-0">
       <div class="col-3"></div>
       <div class="col-1">
-        <input class="btn slim" type="image" src="./images/vol.jpg" draggable="false" onclick="playAudio()" />
+        <input id="vol" class="btn slim" type="image" src="./images/vol.jpg" draggable="false" onclick="playAudio()" />
       </div>
-      <div class="col-2 question"></div>
+      <div id="question" class="col-2 question"></div>
+    </div>
+
+    <div class="row g-0">
+      <div class="col-5"></div>
+      <div class="col-3">
+          <button class="btn slim" id="restart" onclick="restart" draggable="false" style="display: none;">si'owa'si?</button>
+      </div>
     </div>
 
     <div class="row g-0">

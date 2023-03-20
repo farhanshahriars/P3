@@ -15,5 +15,20 @@ img {
 }
 
 /* id based styles *****************************************/
+#restart {
+  display:flex;
+  font-size: 50px;
+  font-style: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+
+}
+
+#restart:hover {
+  color: red;
+}
 
 /* class based styles **************************************/
