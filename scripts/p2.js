@@ -1,7 +1,7 @@
 /**
  * The purpose of this file is to provide functionality for the grid and the entire webpage
  *
- * @author Basel Allam, Josh Cole
+ * @author Basel Allam, Josh Cole, Philip Jones, Zeba Syed, Bhaumik Vyas
  */
 
 /*Global variables*/
@@ -32,10 +32,28 @@ const imageList = [
   "./images/aqqText.jpg",
 ];
 
-//A value to link the audio button with the word on screen so it plays the correct audio
-let startQuestion = Math.floor(Math.random() * 9);
+/*
+A value used to determine what word question is displayed on screen
+Allow for the correct audio to be played for the displayed word question
+Get rid of the old question when the page is reset
+Determine if the user dropped the bear correctly or not
+*/
+let answer = Math.floor(Math.random() * 9);
 
-const answer = Math.floor(Math.random() * 9);
+/*
+A value in string format to store the number of the image the bear is dropped onto
+so we could use it to show that image again when the page is reset
+*/
+let dropOn = "";
+
+/**
+ * A funciton used to get a new value for answer when the page is reset
+ *
+ * @author Basel
+ */
+function newAnswer() {
+  answer = Math.floor(Math.random() * 9);
+}
 
 /**
  * A function to play the audio for the displayed word
@@ -56,6 +74,16 @@ function playAudio() {
 function loadStartQuestion() {
   var loadImage = imageList[answer];
   $(".question").append("<img src= " + loadImage + ' alt="">');
+}
+
+/**
+ * A function used to get rid of the old word question when the page is reset
+ *
+ * @author Basel
+ */
+function resetQuestion() {
+  var loadImage = imageList[answer];
+  $(".question").children("img").remove();
 }
 
 /**
@@ -91,12 +119,12 @@ function allowDrop(ev, imageNum) {
   ev.preventDefault();
 
   /* Watching this output indicates how a potential bug can occur in your
-       code, if you don't handle the possibility that the id from the div tag
-       as well as the img tag, can be present via the "event" object */
+         code, if you don't handle the possibility that the id from the div tag
+         as well as the img tag, can be present via the "event" object */
   console.log(ev.target.id);
 
   /* One possible fix is to simply pass a separate argument with the
-       necessary value */
+         necessary value */
   console.log("imageNum=" + imageNum);
 
   // show all images except the one the bear is being dragged over
@@ -124,24 +152,26 @@ function allowDrop(ev, imageNum) {
 function drop(ev, imageNum, cellNum) {
   ev.preventDefault();
 
-  // hide current image in the cell the bear is being dropped in
+  //Hide current image in the cell the bear is being dropped in
   $("#image" + imageNum).hide();
 
-  // contains the id of the element that was being dragged
+  //Contains the id of the element that was being dragged
   let data = ev.dataTransfer.getData("text");
 
-  // append and display bear image into cell
+  dropOn = imageNum;
+
+  //Append and display bear image into cell
   cellNum.appendChild(document.getElementById(data));
 
-  // Make the bear image undraggable after it has been dropped
+  //Make the bear image undraggable after it has been dropped
   bear.setAttribute("draggable", false);
 
-  // call check answer funtion to see determine if the bear was dropped in the correct cell
+  //Call check answer funtion to see determine if the bear was dropped in the correct cell
   checkAnswer(imageNum);
 }
 
 /**
- * this function displays the screen with images
+ * This function displays the screen with images
  * and text for the correct answer
  *
  * @author Josh Cole Bhaumik
@@ -151,12 +181,12 @@ function correct() {
   $("#star2").show();
   $("#correctText").show();
   $("#restart").show();
-    $("#vol").hide();
-    $("#question").hide();
+  $("#vol").hide();
+  $("#question").hide();
 }
 
 /**
- * this function displays the screen with images
+ * This function displays the screen with images
  * and text for the incorrect answer
  *
  * @author Josh Cole Bhaumik
@@ -166,12 +196,12 @@ function incorrect() {
   $("#sun2").show();
   $("#incorrectText").show();
   $("#restart").show();
-    $("#vol").hide();
-    $("#question").hide();
+  $("#vol").hide();
+  $("#question").hide();
 }
 
 /**
- * funtion to check the answer, and display either the
+ * Funtion to check the answer, and display either the
  * correct or incorrect screens by calling their functions
  *
  * @author Josh Cole
@@ -182,4 +212,41 @@ function checkAnswer(imageNum) {
   } else {
     incorrect();
   }
+}
+
+/**
+ * A function to bring back to the page to its original state for the
+ * user to answer different question;
+ */
+function startAgain() {
+  //Storing the value of the answer before resetting it
+  let prevAnswer = answer;
+
+  //Resetting the question with a different answer
+  resetQuestion();
+  newAnswer();
+  loadStartQuestion();
+
+  //Hiding the correct/incorrect screen and showing the question again
+  $("#star1").hide();
+  $("#star2").hide();
+  $("#correctText").hide();
+  $("#sun1").hide();
+  $("#sun2").hide();
+  $("#incorrectText").hide();
+  $("#restart").hide();
+  $("#vol").show();
+  $("#question").show();
+
+  //Removing the bear from where it was dropped
+  let place = document.getElementById("bear");
+  place.remove();
+
+  //Showing the image that the bear was dropped on
+  $("#image" + dropOn).show();
+
+  //Putting the bear back in its original place
+  $("#bearcell").append(
+    '<img id="bear" src="./images/bear.jpg" alt="" ondragstart="drag(event)" />'
+  );
 }
