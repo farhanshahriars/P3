@@ -1,76 +1,33 @@
-/*Global variables*/
-const audioList = ["./audios/ltu.wav", "./audios/kil.wav", "./audios/aqq.wav"];
-const imageList = [
-  "./images/wiktmText.jpg",
-  "./images/teluisiText.jpg",
-  "./images/ninText.jpg",
-  "./images/mijisiText.jpg",
-  "./images/ltuText.jpg",
-  "./images/kilText.jpg",
-  "./images/kesalkText.jpg",
-  "./images/elieyText.jpg",
-  "./images/aqqText.jpg",
-];
-const answer = Math.random() * 9;
-
 /**
+ * This function stores the id of the element thats being dragged under "text"
+ * in a common storage area.
  *
- */
-function playAudio() {
-  //var audio = new Audio("./audios/ltu.wav");
-  var audio = new Audio();
-  audio.src = audioList[Math.floor(Math.random() * 9)];
-  audio.play();
-}
-
-/**
+ * When an element starts to be draged, this funcion is immediately called.
+ * "ev" is the event object loaded with "drag" event info.
  *
+ * @author Josh - created and wrote this funtion
  */
-function loadStartQuestion() {
-  var loadImage = imageList[Math.floor(Math.random() * 9)];
-  console.log(loadImage);
-  $(".question").append("<img src= " + loadImage + ' alt="">');
-}
-
-/*
-  The purpose of this function is to store the id of the element being
-  dragged in a common storage area, under the key "text".
-
-  This function runs as soon as an element has begun to be dragged.
-
-  "ev" is the event object loaded with "drag" event info
-
-  Author: Josh Cole
-*/
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
-/*
-    The purpose of this function is to suspend the default behaviour so that
-    instead the dragged element can potentially end up with a new position.
-  
-    This function runs when a dragged element is over a potential target.
-  
-    "ev" is the event object loaded with "dragover" event info
-    "imageNum" is the particular data passed as a fix for the issue of
-      having 2 different id's contained within the "event" object at
-      different times. The function also hides the image the bear is being 
-      gragged over top of.
-  
-    Author: Josh Cole
-  */
+/**
+ * This function runs when dragged element is hovering over a target, and
+ * prevents the default action from happening so that the dragged element can
+ * be dropped into a new postition. The function also hides the image the bear
+ * is being dragged over top of.
+ *
+ * "ev" is the event object loaded with "dragover" event info
+ *
+ * "imageNum" is the data passed to the function used to hide
+ * the image (target) that the dragged element is hovering over.
+ * this is done by using the targets id (imageNum) to hide the image.
+ *
+ * @author Josh - created and wrote this funtion
+ */
 function allowDrop(ev, imageNum) {
+  // stop the default action of an element from happening
   ev.preventDefault();
-
-  /* Watching this output indicates how a potential bug can occur in your
-       code, if you don't handle the possibility that the id from the div tag
-       as well as the img tag, can be present via the "event" object */
-  console.log(ev.target.id);
-
-  /* One possible fix is to simply pass a separate argument with the
-       necessary value */
-  console.log("imageNum=" + imageNum);
 
   // show all images except the one the bear is being dragged over
   $("#image1").show();
@@ -85,65 +42,83 @@ function allowDrop(ev, imageNum) {
   $("#image" + imageNum).hide();
 }
 
-/*
-    The purpose of this function is: to allow a dropped element to acquire a
-    new position; retrieve the id of the dropped element using the key "text";
-    and to set the new position of the dropped element; respectively. The function 
-    also calls the checkAnswer function to determine the users correctness.
-  
-    "ev" is the event object loaded with "drop" event info
-  
-    Author: Josh Cole
-  */
+/**
+ * The purpose of this function is to allow a dropped element to acquire a
+ * new position, the previous element has already been hidden by allowDrop().
+ * retrieve the id of the dropped element using the key "text";
+ * and to set the new position of the dropped element; respectively.
+ *
+ *
+ * "ev" is the event object loaded with "drop" event info
+ *
+ * "imageNum" is the data passed to the function used to check
+ * if the bear was dropped on the correct image by calling checkAnswer
+ *
+ * "cellNum" is used to append the bear image (data) to the correct cell
+ *
+ * @author Josh - created and wrote this function
+ */
 function drop(ev, imageNum, cellNum) {
+  // stop the default action of an element from happening
   ev.preventDefault();
 
-  // hide current image in the cell the bear is being dropped in
-  $("#image" + imageNum).hide();
-
-  // contains the id of the element that was being dragged
+  //Contains the id of the element that was being dragged
   let data = ev.dataTransfer.getData("text");
 
-  // append and display bear image into cell
+  // set dropOn to the image number dropped on
+  dropOn = imageNum;
+
+  //Append and display bear image into cell
   cellNum.appendChild(document.getElementById(data));
 
-  // Make the bear image undraggable after it has been dropped
+  //Make the bear image undraggable after it has been dropped
   bear.setAttribute("draggable", false);
 
-  // call check answer funtion to see determine if the bear was dropped in the correct cell
+  //Call check answer funtion to see determine if the bear was dropped in the correct cell
   checkAnswer(imageNum);
 }
 
 /**
- * this function displays the screen with images
+ * This function displays the screen with images
  * and text for the correct answer
  *
- * Author: Josh Cole
+ * @author Josh - displaying stars and correctText
+ *         Bhaumik - handling restart, vol and question
  */
 function correct() {
   $("#star1").show();
   $("#star2").show();
   $("#correctText").show();
+  $("#restart").show();
+  $("#vol").hide();
+  $("#question").hide();
 }
 
 /**
- * this function displays the screen with images
+ * This function displays the screen with images
  * and text for the incorrect answer
  *
- * Author: Josh Cole
+ * @author Josh - displaying suns and incorrectText
+ *         Bhaumik - handling restart, vol and question
  */
 function incorrect() {
   $("#sun1").show();
   $("#sun2").show();
   $("#incorrectText").show();
+  $("#restart").show();
+  $("#vol").hide();
+  $("#question").hide();
 }
 
 /**
- * funtion to check the answer, and display either the
+ * Funtion to check the answer, and display either the
  * correct or incorrect screens by calling their functions
+ *
+ * @author Josh - created and wrote function
  */
 function checkAnswer(imageNum) {
-  if (answer == imageNum) {
+  // if the imageNum = the answer, it is correct, else incorrect
+  if (answer == imageNum - 1) {
     correct();
   } else {
     incorrect();
