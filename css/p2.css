@@ -1,7 +1,7 @@
 /*
-  The file provides the background colour and image sizes for the webpage
-  
-  Author: Basel Allam
+Purpose: The file provides colours, sizing and effects for the webpage
+Author(s) / Work Done: Basel Allam - Image sizes & background colour
+                       Bhaumik Vyas - restart button attributes
 */
 
 /* HTML tag based styles ***********************************/
@@ -16,7 +16,7 @@ img {
 
 /* id based styles *****************************************/
 #restart {
-  display:flex;
+  display: flex;
   font-size: 50px;
   font-style: bold;
   background: none;
@@ -24,7 +24,6 @@ img {
   cursor: pointer;
   display: inline-block;
   font-weight: bold;
-
 }
 
 #restart:hover {

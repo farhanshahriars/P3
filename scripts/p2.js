@@ -1,6 +1,11 @@
 /**
- * The purpose of this file is to provide functionality for the grid and the entire webpage
+ * Purpose: This file is to provides functionality for the grid and the entire webpage
  *
+ * Author(s) / Work Done: Basel Allam - Some global variables & gameplay functions
+ *                        Josh Cole - Drag and drop functionality along with some global variables and display functions
+ *                        Zeba Syed - Drag and drop functionality
+ *                        Bhaumik Vyas - Restart button functionality
+ *                        Philip Jones - Gameplay loop function
  * @author Basel Allam, Josh Cole, Philip Jones, Zeba Syed, Bhaumik Vyas
  */
 
@@ -118,15 +123,6 @@ function drag(ev) {
 function allowDrop(ev, imageNum) {
   ev.preventDefault();
 
-  /* Watching this output indicates how a potential bug can occur in your
-         code, if you don't handle the possibility that the id from the div tag
-         as well as the img tag, can be present via the "event" object */
-  console.log(ev.target.id);
-
-  /* One possible fix is to simply pass a separate argument with the
-         necessary value */
-  console.log("imageNum=" + imageNum);
-
   // show all images except the one the bear is being dragged over
   $("#image1").show();
   $("#image2").show();
@@ -174,7 +170,7 @@ function drop(ev, imageNum, cellNum) {
  * This function displays the screen with images
  * and text for the correct answer
  *
- * @author Josh Cole Bhaumik
+ * @author Josh Cole, Bhaumik
  */
 function correct() {
   $("#star1").show();

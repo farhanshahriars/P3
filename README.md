@@ -12,4 +12,4 @@ Basel linked to VsCode
 - Display if answer is correct or not
 - Audio --- Josh
 - Replay Button
-- Loop or redraw --- Philip
+- Loop or redraw
