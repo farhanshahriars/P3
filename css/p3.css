@@ -1,0 +1,55 @@
+/*
+Purpose: The file provides colours, sizing and effects for the webpage
+Author(s) / Work Done: Basel Allam - Image sizes & background colour
+                       Bhaumik Vyas - restart button attributes
+*/
+
+/* HTML tag based styles ***********************************/
+body {
+  background-color: #f0e68c;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+/* id based styles *****************************************/
+#score {
+  display: flex;
+  font-size: 22px;
+  font-style: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
+
+#mySpan {
+  display: flex;
+  font-size: 50px;
+  font-style: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
+
+#restart {
+  display: flex;
+  font-size: 50px;
+  font-style: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
+
+#restart:hover {
+  color: magenta;
+}
+
+/* class based styles **************************************/
